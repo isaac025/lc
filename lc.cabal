@@ -1,0 +1,27 @@
+cabal-version:      3.0
+name:               lc
+version:            0.1.0.0
+synopsis:           Lambda Calculus Interpreter
+-- description:
+homepage:           https://github.com/isaac025/lc
+license:            GPL-2.0-only
+license-file:       LICENSE
+author:             Isaac Lopez
+maintainer:         isaac.lopez@upr.edu
+-- copyright:
+category:           Language
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+-- extra-source-files:
+
+common warnings
+    ghc-options: -Wall
+
+executable lc
+    import:           warnings
+    main-is:          Main.hs
+    -- other-modules:
+    -- other-extensions:
+    build-depends:    base ^>=4.17.2.1
+    hs-source-dirs:   src
+    default-language: Haskell2010
