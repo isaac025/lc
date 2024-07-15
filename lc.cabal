@@ -22,7 +22,7 @@ common warnings
 executable lc
     import:           warnings
     main-is:          Main.hs
-    -- other-modules:
+    other-modules:    Expr
     -- other-extensions:
     build-depends:    base ^>=4.17.2.1
                     , parsec
