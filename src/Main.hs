@@ -11,6 +11,6 @@ main = do
 
 repl :: IO ()
 repl = do
-    putStr "l> "
+    putStr "\984615> "
     l <- getLine
     if l == "(quit)" then pure () else putStrLn l >> repl

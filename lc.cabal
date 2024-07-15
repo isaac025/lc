@@ -22,10 +22,18 @@ common warnings
 executable lc
     import:           warnings
     main-is:          Main.hs
-    other-modules:    Expr
+    other-modules:    Parser
     -- other-extensions:
     build-depends:    base ^>=4.17.2.1
                     , parsec
-                    , mtl
     hs-source-dirs:   src
+
+test-suite lc-parser-test
+    type:             exitcode-stdio-1.0
+    main-is:          test-parser.hs
+    build-depends:    base ^>=4.17.2.1
+                    , QuickCheck
+                    , lc
     default-language: Haskell2010
+    hs-source-dirs:   tests
+
