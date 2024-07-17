@@ -1,4 +1,4 @@
-module Parser where
+module Parser (LamExpr (..), parser) where
 
 import Text.Parsec (ParseError, Parsec, between, char, many1, noneOf, parse, sepBy1, (<|>))
 
@@ -13,6 +13,7 @@ data LamExpr
     = Name String
     | Function String LamExpr
     | Application LamExpr LamExpr
+    deriving (Eq)
 
 instance Show LamExpr where
     show (Name s) = s
@@ -43,6 +44,6 @@ application = between (char '(') (char ')') $ do
 expression :: Parsec String st LamExpr
 expression = application <|> function <|> name
 
--- Testing parser function
-testParser :: Parsec String () LamExpr -> String -> Either ParseError LamExpr
-testParser p = parse p ""
+-- parser: takes a string and parses it.
+parser :: String -> Either ParseError LamExpr
+parser = parse expression "lc"

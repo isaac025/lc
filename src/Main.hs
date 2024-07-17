@@ -1,5 +1,8 @@
 module Main where
 
+import Control.Monad (when)
+
+import Parser
 import System.IO (BufferMode (LineBuffering, NoBuffering), hSetBuffering, stdout)
 
 main :: IO ()
@@ -13,4 +16,12 @@ repl :: IO ()
 repl = do
     putStr "\984615> "
     l <- getLine
-    if l == "(quit)" then pure () else putStrLn l >> repl
+    when (l == "(quit)") $ do
+        pure ()
+
+beta :: LamExpr -> LamExpr
+beta (Application l1 _l2) =
+    case l1 of
+        (Function _n _b) -> undefined
+        _ -> undefined
+beta l = l
